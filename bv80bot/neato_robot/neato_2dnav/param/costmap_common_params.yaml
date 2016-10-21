@@ -30,7 +30,7 @@ obstacle_layer:
     max_obstacle_height: 0.35
 
 sonar_layer:
-  topics: ["/sonar_readings"]
+  topics: ["/ultrasound1"]
   clear_threshold:    0.46
   mark_threshold:     0.8
   no_readings_timeout: 2.0
