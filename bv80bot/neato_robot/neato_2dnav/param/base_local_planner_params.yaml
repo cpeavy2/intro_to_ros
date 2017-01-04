@@ -71,8 +71,3 @@ DWAPlannerROS:
   vth_samples: 20
 
   use_dwa: true
-
-
-  
- 
-

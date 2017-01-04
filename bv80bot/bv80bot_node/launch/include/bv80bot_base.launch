@@ -35,9 +35,12 @@
     <remap from="cmd_vel_mux/input/teleop" to="$(arg output_cmd_vel_topic)" />
   </node>
 
-  
   <!-- create transform for laser (should be moved to the URDF) -->
   <node name="laser_to_base" pkg="tf2_ros" type="static_transform_publisher"  args="-0.090 0.0 0.037 0 0 0 1 base_link base_laser_link" />
+
+  <!-- create transform for ultrasound (should be moved to the URDF) -->
+  <node name="ultrasound_to_base1" pkg="tf2_ros" type="static_transform_publisher"  args="0.051 0 0.343  0 0 0 1 base_link /ultrasound_top" />
+  <node name="ultrasound_to_base2" pkg="tf2_ros" type="static_transform_publisher"  args="0.051 0 0.127  0 0 0 1 base_link ultrasound_bottom" />
 
   <!-- launch the main base driver node -->
   <node name="neato" pkg="neato_node" type="neato.py" output="screen">
@@ -46,7 +49,7 @@
     <remap from="/base_scan" to="/scan" />
   </node>
  
-  <!-- publish teh URDF -->
+  <!-- publish the URDF -->
   <param name="robot_description" command="$(find xacro)/xacro.py $(find neato_node)/urdf/neato.urdf.xacro" />
   
   <!-- publish the robot state transforms -->
